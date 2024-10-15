@@ -549,6 +549,7 @@ import {
   Button,
   Snackbar,
   Alert,
+  Pagination,
 } from "@mui/material";
 
 function ProductUpdate() {
@@ -557,6 +558,10 @@ function ProductUpdate() {
   const [editedProduct, setEditedProduct] = useState<any>(null);
   const [error, setError] = useState({ name: false, price: false });
   const [snackbarOpen, setSnackbarOpen] = useState<boolean>(false);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+
+  const itemsPerPage = 10; // Set the number of products per page
+  const totalPages = Math.ceil(products.length / itemsPerPage); // Calculate total pages
 
   // Open the dialog and set the selected product for editing
   const handleProductClick = (product: any) => {
@@ -603,6 +608,17 @@ function ProductUpdate() {
     setEditedProduct(null);
   };
 
+  // Handle page change
+  const handlePageChange = (event: React.ChangeEvent<unknown>, page: number) => {
+    setCurrentPage(page);
+  };
+
+  // Get products for the current page
+  const paginatedProducts = products.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
   // Handle Snackbar close
   const handleSnackbarClose = () => {
     setSnackbarOpen(false);
@@ -611,7 +627,7 @@ function ProductUpdate() {
   return (
     <div>
       <Typography
-        variant="h2"
+        variant="h1"
         gutterBottom
         sx={{
           color: "#5A6A85",
@@ -638,7 +654,7 @@ function ProductUpdate() {
         }}
       >
         <List>
-          {products.map((product: any, index: number) => (
+          {paginatedProducts.map((product: any, index: number) => (
             <ListItem
               key={index}
               button
@@ -678,6 +694,25 @@ function ProductUpdate() {
           ))}
         </List>
       </Box>
+
+      {/* Pagination Component */}
+      <Box display="flex" justifyContent="center" mt={3}>
+        <Pagination
+          count={totalPages}
+          page={currentPage}
+          onChange={handlePageChange}
+          sx={{
+            "& .MuiPaginationItem-root": {
+              color: "black", // Set color for pagination items
+            },
+            "& .MuiPaginationItem-root.Mui-selected": {
+              backgroundColor: "#000", // Set selected background color
+              color: "#fff", // Set selected text color
+            },
+          }}
+        />
+      </Box>
+
       {/* Edit Product Dialog */}
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Updating Stock Item</DialogTitle>
@@ -750,6 +785,7 @@ function ProductUpdate() {
           </Button>
         </DialogActions>
       </Dialog>
+
       {/* Snackbar for success message */}
       <Snackbar
         open={snackbarOpen}

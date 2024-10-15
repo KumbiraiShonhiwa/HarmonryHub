@@ -212,6 +212,9 @@ const StockLoggingForm = () => {
                     endAdornment: formData.id && (
                       <CheckCircleOutlineIcon color="success" />
                     ),
+                    sx: {
+                      color: "black", // Set input text color to black
+                    },
                   }}
                 />
               </Tooltip>
@@ -237,6 +240,9 @@ const StockLoggingForm = () => {
                     endAdornment: formData.title && (
                       <CheckCircleOutlineIcon color="success" />
                     ),
+                    sx: {
+                      color: "black", // Set input text color to black
+                    },
                   }}
                 />
               </Tooltip>
@@ -257,6 +263,9 @@ const StockLoggingForm = () => {
                         <DescriptionIcon />
                       </InputAdornment>
                     ),
+                    sx: {
+                      color: "black", // Set input text color to black
+                    },
                   }}
                 />
               </Tooltip>
@@ -277,6 +286,9 @@ const StockLoggingForm = () => {
                         <LinkIcon />
                       </InputAdornment>
                     ),
+                    sx: {
+                      color: "black", // Set input text color to black
+                    },
                   }}
                 />
               </Tooltip>
@@ -285,7 +297,12 @@ const StockLoggingForm = () => {
             {/* Image Upload */}
             <Grid item xs={12}>
               <Tooltip title="Upload the product image">
-                <Button variant="contained" color="warning" component="label" fullWidth>
+                <Button
+                  variant="contained"
+                  color="warning"
+                  component="label"
+                  fullWidth
+                >
                   Upload Image
                   <input
                     type="file"
@@ -373,6 +390,9 @@ const StockLoggingForm = () => {
                     endAdornment: formData.price && (
                       <CheckCircleOutlineIcon color="success" />
                     ),
+                    sx: {
+                      color: "black", // Set input text color to black
+                    },
                   }}
                 />
               </Tooltip>
@@ -393,6 +413,9 @@ const StockLoggingForm = () => {
                         <BrandIcon />
                       </InputAdornment>
                     ),
+                    sx: {
+                      color: "black", // Set input text color to black
+                    },
                   }}
                 />
               </Tooltip>

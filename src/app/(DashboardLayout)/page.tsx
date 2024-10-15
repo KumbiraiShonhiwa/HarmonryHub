@@ -544,8 +544,8 @@ import {
   FormControl,
   InputLabel,
   CardMedia,
+  Pagination,
 } from "@mui/material";
-import Carousel from "react-material-ui-carousel";
 import PageContainer from "@/app/(DashboardLayout)/components/container/PageContainer";
 import ProductDetail from "@/app/(DashboardLayout)/ProductDetail";
 
@@ -553,7 +553,10 @@ const MusicalInstruments = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOption, setSortOption] = useState("name");
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
+  // Filtering and sorting logic
   const filteredProducts = productsData
     .filter((product) =>
       product.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -568,6 +571,13 @@ const MusicalInstruments = () => {
       return 0;
     });
 
+  // Pagination logic
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+  const displayedProducts = filteredProducts.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
   const handleProductClick = (product: any) => {
     setSelectedProduct(product);
   };
@@ -576,57 +586,28 @@ const MusicalInstruments = () => {
     setSelectedProduct(null);
   };
 
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    setCurrentPage(value);
+  };
+
   return (
     <PageContainer
       title="Musical Instruments"
       description="Browse our selection of high-quality musical instruments."
     >
-      {/* Carousel of Musical Instruments */}
-      {/* <Box
-        sx={{
-          backgroundColor: "#e9d9c8",
-        }}
-      >
-        <Carousel
-          animation="slide" // Can also use "fade" animation
-          autoPlay={true}
-          indicators={true}
-          navButtonsAlwaysVisible={true}
-        >
-          {productsData.map((product, index) => (
-            <Box key={index} sx={{ px: 2 }}>
-              <Typography
-                variant="h3"
-                color="black"
-                sx={{ textAlign: "center", mt: 1 }}
-              >
-                {product.name}
-              </Typography>
-              <CardMedia
-                component="img"
-                image={product.imageUrl}
-                alt={product.name}
-                sx={{
-                  height: 900,
-                  objectFit: "cover",
-                  borderRadius: "8px",
-                }}
-              />
-            </Box>
-          ))}
-        </Carousel>
-      </Box> */}
-
       <Box
         sx={{
           backgroundColor: "#e9d9c8",
           mb: 3,
           elevation: 6,
-          borderRadius: "10px", // Rounded corners for the container
-          boxShadow: "0 4px 12px rgba(0,0,0,0.1)", // Soft shadow for elevation effect
-          transition: "box-shadow 0.3s", // Transition effect for hover
+          borderRadius: "10px",
+          boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+          transition: "box-shadow 0.3s",
           "&:hover": {
-            boxShadow: "0 6px 18px rgba(0,0,0,0.15)", // Elevates shadow on hover
+            boxShadow: "0 6px 18px rgba(0,0,0,0.15)",
           },
         }}
       >
@@ -670,23 +651,23 @@ const MusicalInstruments = () => {
               onChange={(e) => setSearchTerm(e.target.value)}
               sx={{
                 mb: 2,
-                borderRadius: "8px", // Rounded corners for the text field
+                borderRadius: "8px",
                 ".MuiInputBase-input": {
-                  color: "black", // Text color inside the input
+                  color: "black",
                 },
                 ".MuiOutlinedInput-notchedOutline": {
-                  borderColor: "#412711", // Border color
+                  borderColor: "#412711",
                 },
                 "&:hover .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "#412711", // Border color on hover
+                  borderColor: "#412711",
                 },
                 ".MuiInputLabel-root": {
-                  color: "black", // Label color
+                  color: "black",
                 },
               }}
               InputProps={{
                 sx: {
-                  color: "black", // Ensures that input text is black
+                  color: "black",
                 },
               }}
             />
@@ -709,7 +690,7 @@ const MusicalInstruments = () => {
                   ".MuiSvgIcon-root": {
                     color: "black",
                   },
-                  borderRadius: "8px", // Rounded corners for the select input
+                  borderRadius: "8px",
                 }}
               >
                 <MenuItem
@@ -728,17 +709,17 @@ const MusicalInstruments = () => {
             </FormControl>
 
             <List>
-              {filteredProducts.map((product, index) => (
+              {displayedProducts.map((product, index) => (
                 <ListItem
                   key={index}
                   button
                   onClick={() => handleProductClick(product)}
                   sx={{
-                    transition: "background-color 0.3s, box-shadow 0.3s", // Smooth transitions
-                    borderRadius: "12px", // Rounded corners for the product cards
+                    transition: "background-color 0.3s, box-shadow 0.3s",
+                    borderRadius: "12px",
                     "&:hover": {
-                      backgroundColor: "#f0e6db", // Subtle background change on hover
-                      boxShadow: "0 4px 16px rgba(0,0,0,0.1)", // Shadow on hover
+                      backgroundColor: "#f0e6db",
+                      boxShadow: "0 4px 16px rgba(0,0,0,0.1)",
                     },
                   }}
                 >
@@ -751,7 +732,7 @@ const MusicalInstruments = () => {
                         width: 100,
                         height: 100,
                         mr: 2,
-                        borderRadius: "8px", // Rounded corners for the images
+                        borderRadius: "8px",
                       }}
                     />
                     <Box>
@@ -767,6 +748,27 @@ const MusicalInstruments = () => {
                 </ListItem>
               ))}
             </List>
+
+            {/* Pagination Component */}
+            <Box display="flex" justifyContent="center" mt={3}>
+              <Pagination
+                count={totalPages}
+                page={currentPage}
+                onChange={handlePageChange}
+                sx={{
+                  "& .MuiPaginationItem-root": {
+                    color: "black", // Set color for pagination items
+                  },
+                  "& .MuiPaginationItem-root.Mui-selected": {
+                    backgroundColor: "#000", // Set selected background color
+                    color: "#fff", // Set selected text color
+                  },
+                  "& .MuiPaginationItem-root:hover": {
+                    backgroundColor: "#f0e6db", // Optional hover background color
+                  },
+                }}
+              />
+            </Box>
           </Box>
         )}
       </Box>

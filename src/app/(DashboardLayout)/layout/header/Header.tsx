@@ -112,6 +112,7 @@ const Header = ({
         <Typography
           variant="h2"
           component="div"
+          color="text.secondary"
           sx={{
             fontFamily: "'Playfair Display', serif",
             fontWeight: 700,
@@ -125,7 +126,6 @@ const Header = ({
           <IconButton
             size="large"
             aria-label="show cart"
-            color="black"
             onClick={handleClickCart}
           >
             <Badge badgeContent={cart.length} color="secondary">

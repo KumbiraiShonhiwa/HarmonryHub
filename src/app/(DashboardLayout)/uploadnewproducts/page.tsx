@@ -24,14 +24,13 @@ const AddProductPage = ({ onAddProduct }) => {
 
   const handleBackButtonClick = () => {
     // Logic to navigate back
-
     console.log("Back button clicked");
   };
 
   return (
     <Container>
       <Typography
-        variant="h2"
+        variant="h1"
         gutterBottom
         sx={{
           color: "#5A6A85",
@@ -59,6 +58,11 @@ const AddProductPage = ({ onAddProduct }) => {
           onChange={handleChange}
           fullWidth
           margin="normal"
+          InputProps={{
+            sx: {
+              color: "black", // Set input text color to black
+            },
+          }}
         />
         <TextField
           label="Description"
@@ -67,6 +71,11 @@ const AddProductPage = ({ onAddProduct }) => {
           onChange={handleChange}
           fullWidth
           margin="normal"
+          InputProps={{
+            sx: {
+              color: "black", // Set input text color to black
+            },
+          }}
         />
         <TextField
           label="Price"
@@ -75,6 +84,11 @@ const AddProductPage = ({ onAddProduct }) => {
           onChange={handleChange}
           fullWidth
           margin="normal"
+          InputProps={{
+            sx: {
+              color: "black", // Set input text color to black
+            },
+          }}
         />
         <TextField
           label="Image URL"
@@ -83,6 +97,11 @@ const AddProductPage = ({ onAddProduct }) => {
           onChange={handleChange}
           fullWidth
           margin="normal"
+          InputProps={{
+            sx: {
+              color: "black", // Set input text color to black
+            },
+          }}
         />
         <Grid item xs={12}>
           <Box display="flex" justifyContent="space-between">
