@@ -1,0 +1,35 @@
+.background-image{
+    background-image: url('/src/img/logo.png');
+    background-size: contain; /* Adjust to cover, contain, etc., based on your needs */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-position: center; /* Center the image */
+    width: 174px; /* Set the width and height according to your needs */
+    height: 70px;
+}
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    justify-content: center;
+  }
+  
+  .pagination .page-item {
+    margin: 0 5px;
+  }
+  
+  .pagination .page-link {
+    display: block;
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .pagination .active .page-link {
+    background-color: #007bff;
+    color: white;
+  }
+  
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
