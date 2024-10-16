@@ -1,30 +1,69 @@
 "use client"; // This tells Next.js this is a client-side component
 import React, { useState } from "react";
-import { TextField, Button, Container, Typography, Grid } from "@mui/material";
+import { TextField, Button, Container, Typography, Grid, InputAdornment } from "@mui/material";
 import { Box } from "@mui/system";
 import CheckIcon from "@mui/icons-material/Check";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ImageIcon from "@mui/icons-material/Image";
+import DescriptionIcon from "@mui/icons-material/Description";
+import PriceCheckIcon from "@mui/icons-material/PriceCheck";
+import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 
 const AddProductPage = ({ onAddProduct }) => {
   const [newProduct, setNewProduct] = useState({
     name: "",
     description: "",
+    price: 0,
+    image: null, // changed from imageUrl to handle files
+  });
+
+  const [errors, setErrors] = useState({
+    name: "",
+    description: "",
     price: "",
-    imageUrl: "",
+    image: "",
   });
 
   const handleChange = (e) => {
-    setNewProduct({ ...newProduct, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setNewProduct({ ...newProduct, [name]: value });
+  };
+
+  const handleImageChange = (e) => {
+    setNewProduct({ ...newProduct, image: e.target.files[0] });
+  };
+
+  const validate = () => {
+    let tempErrors = { name: "", description: "", price: "", image: "" };
+    let isValid = true;
+
+    if (!newProduct.name) {
+      tempErrors.name = "Product name is required";
+      isValid = false;
+    }
+    if (!newProduct.description) {
+      tempErrors.description = "Product description is required";
+      isValid = false;
+    }
+    if (!newProduct.price || isNaN(newProduct.price)) {
+      tempErrors.price = "Valid price is required";
+      isValid = false;
+    }
+    if (!newProduct.image) {
+      tempErrors.image = "Product image is required";
+      isValid = false;
+    }
+
+    setErrors(tempErrors);
+    return isValid;
   };
 
   const handleSubmit = () => {
-    onAddProduct(newProduct);
-    setNewProduct({ name: "", description: "", price: "", imageUrl: "" });
-  };
-
-  const handleBackButtonClick = () => {
-    // Logic to navigate back
-    console.log("Back button clicked");
+    if (validate()) {
+      onAddProduct(newProduct);
+      setNewProduct({ name: "", description: "", price: 0, image: null });
+      setErrors({ name: "", description: "", price: "", image: "" });
+    }
   };
 
   return (
@@ -45,10 +84,10 @@ const AddProductPage = ({ onAddProduct }) => {
       <Box
         sx={{
           backgroundColor: "#e9d9c8",
-          borderRadius: "10px", // Rounded corners for the container
-          boxShadow: "0 4px 12px rgba(0,0,0,0.1)", // Soft shadow for elevation effect
-          padding: 2, // Adds padding inside the box
-          marginTop: 3, // Adds margin to the top of the box
+          borderRadius: "10px",
+          boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+          padding: 2,
+          marginTop: 3,
         }}
       >
         <TextField
@@ -58,10 +97,17 @@ const AddProductPage = ({ onAddProduct }) => {
           onChange={handleChange}
           fullWidth
           margin="normal"
+          error={!!errors.name}
+          helperText={errors.name}
           InputProps={{
             sx: {
-              color: "black", // Set input text color to black
+              color: "black",
             },
+            startAdornment: (
+              <InputAdornment position="start">
+                <LocalOfferIcon />
+              </InputAdornment>
+            ),
           }}
         />
         <TextField
@@ -71,10 +117,17 @@ const AddProductPage = ({ onAddProduct }) => {
           onChange={handleChange}
           fullWidth
           margin="normal"
+          error={!!errors.description}
+          helperText={errors.description}
           InputProps={{
             sx: {
-              color: "black", // Set input text color to black
+              color: "black",
             },
+            startAdornment: (
+              <InputAdornment position="start">
+                <DescriptionIcon />
+              </InputAdornment>
+            ),
           }}
         />
         <TextField
@@ -84,33 +137,48 @@ const AddProductPage = ({ onAddProduct }) => {
           onChange={handleChange}
           fullWidth
           margin="normal"
+          error={!!errors.price}
+          helperText={errors.price}
           InputProps={{
             sx: {
-              color: "black", // Set input text color to black
+              color: "black",
             },
+            startAdornment: (
+              <InputAdornment position="start">
+                <PriceCheckIcon />
+              </InputAdornment>
+            ),
           }}
         />
-        <TextField
-          label="Image URL"
-          name="imageUrl"
-          value={newProduct.imageUrl}
-          onChange={handleChange}
+        <Button
+          variant="contained"
+          component="label"
+          sx={{ marginTop: 2 }}
           fullWidth
-          margin="normal"
-          InputProps={{
-            sx: {
-              color: "black", // Set input text color to black
-            },
-          }}
-        />
-        <Grid item xs={12}>
+          error={!!errors.image}
+          startIcon={<ImageIcon />}
+        >
+          Upload Image
+          <input
+            type="file"
+            accept="image/*"
+            hidden
+            onChange={handleImageChange}
+          />
+        </Button>
+        {errors.image && (
+          <Typography variant="caption" color="error">
+            {errors.image}
+          </Typography>
+        )}
+        <Grid item xs={12} sx={{ marginTop: 2 }}>
           <Box display="flex" justifyContent="space-between">
             <Button
               href="/"
               variant="contained"
               startIcon={<ArrowBackIcon />}
               color="error"
-              style={{ marginRight: "8px" }} // Add some spacing between buttons
+              style={{ marginRight: "8px" }}
             >
               Back
             </Button>

@@ -550,6 +550,7 @@ import {
   Snackbar,
   Alert,
   Pagination,
+  Grid,
 } from "@mui/material";
 
 function ProductUpdate() {
@@ -609,7 +610,10 @@ function ProductUpdate() {
   };
 
   // Handle page change
-  const handlePageChange = (event: React.ChangeEvent<unknown>, page: number) => {
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    page: number
+  ) => {
     setCurrentPage(page);
   };
 
@@ -714,7 +718,13 @@ function ProductUpdate() {
       </Box>
 
       {/* Edit Product Dialog */}
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        sx={{
+          color: "#5A6A85",
+        }}
+      >
         <DialogTitle>Updating Stock Item</DialogTitle>
         <DialogContent>
           <TextField
@@ -777,12 +787,17 @@ function ProductUpdate() {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} style={{ color: "red" }}>
-            Discard
-          </Button>
-          <Button onClick={handleSaveChanges} style={{ color: "green" }}>
-            Save
-          </Button>
+          <Grid item xs={12}>
+            <Box display="flex" justifyContent="space-between">
+              {" "}
+              <Button onClick={handleClose} style={{ color: "red" }}>
+                Discard
+              </Button>
+              <Button onClick={handleSaveChanges} style={{ color: "green" }}>
+                Save
+              </Button>
+            </Box>
+          </Grid>
         </DialogActions>
       </Dialog>
 

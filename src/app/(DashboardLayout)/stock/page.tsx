@@ -26,6 +26,7 @@ import DescriptionIcon from "@mui/icons-material/Description"; // Example icon f
 import LinkIcon from "@mui/icons-material/Link"; // Example icon for Product Link
 import PriceIcon from "@mui/icons-material/AttachMoney"; // Example icon for Price
 import BrandIcon from "@mui/icons-material/LocalOffer"; // Example icon for Brand
+import ImageIcon from "@mui/icons-material/Image";
 
 interface FormData {
   id: string;
@@ -302,6 +303,7 @@ const StockLoggingForm = () => {
                   color="warning"
                   component="label"
                   fullWidth
+                  startIcon={<ImageIcon />}
                 >
                   Upload Image
                   <input
