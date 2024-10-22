@@ -61,37 +61,18 @@ const Profile = () => {
           sx: {
             width: 300,
             maxHeight: 400,
-            backgroundColor: "#412711", // Set background color to red
+            backgroundColor: "#8E4739", // Set background color to red
             color: "text.primary",
           },
         }}
       >
-        <MenuItem>
-          <ListItemIcon>
-            <IconUser width={20} />
-          </ListItemIcon>
-          <ListItemText>My Profile</ListItemText>
-        </MenuItem>
-        <MenuItem>
-          <ListItemIcon>
-            <IconMail width={20} />
-          </ListItemIcon>
-          <ListItemText>My Account</ListItemText>
-        </MenuItem>
-        <MenuItem>
-          <ListItemIcon>
-            <IconListCheck width={20} />
-          </ListItemIcon>
-          <ListItemText>My Tasks</ListItemText>
-        </MenuItem>
-        <Box mt={1} py={1} px={2} >
+        <Box mt={1} py={1} px={2}>
           <Button
             href="/authentication/login"
             variant="outlined"
             color="primary"
             component={Link}
             fullWidth
-            
           >
             Logout
           </Button>

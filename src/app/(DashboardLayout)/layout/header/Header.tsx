@@ -140,7 +140,7 @@ const Header = ({
               sx: {
                 width: 300,
                 maxHeight: 400,
-                backgroundColor: "#412711", // Set background color to red
+                backgroundColor: "#8E4739", // Set background color to red
                 color: "text.primary",
               },
             }}
@@ -192,7 +192,7 @@ const Header = ({
               sx: {
                 width: 300,
                 maxHeight: 400,
-                backgroundColor: "#412711", // Set background color to red
+                backgroundColor: "#8E4739", // Set background color to red
                 color: "text.primary",
               },
             }}
