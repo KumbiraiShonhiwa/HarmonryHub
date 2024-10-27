@@ -1,6 +1,13 @@
 "use client"; // This tells Next.js this is a client-side component
 import React, { useState } from "react";
-import { TextField, Button, Container, Typography, Grid, InputAdornment } from "@mui/material";
+import {
+  TextField,
+  Button,
+  Container,
+  Typography,
+  Grid,
+  InputAdornment,
+} from "@mui/material";
 import { Box } from "@mui/system";
 import CheckIcon from "@mui/icons-material/Check";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -90,8 +97,19 @@ const AddProductPage = ({ onAddProduct }) => {
           marginTop: 3,
         }}
       >
+        <Typography
+          variant="h6"
+          gutterBottom
+          sx={{
+            color: "#5A6A85",
+            marginBottom: 2,
+            fontFamily: "'Playfair Display', serif",
+            fontWeight: 700,
+          }}
+        >
+          Product Name
+        </Typography>
         <TextField
-          label="Product Name"
           name="name"
           value={newProduct.name}
           onChange={handleChange}
@@ -102,6 +120,7 @@ const AddProductPage = ({ onAddProduct }) => {
           InputProps={{
             sx: {
               color: "black",
+              ":hover": { backgroundColor: "inherit" }, // Disable hover effect
             },
             startAdornment: (
               <InputAdornment position="start">
@@ -110,8 +129,20 @@ const AddProductPage = ({ onAddProduct }) => {
             ),
           }}
         />
+        <Typography
+          variant="h6"
+          gutterBottom
+          sx={{
+            color: "#5A6A85",
+            marginBottom: 2,
+            fontFamily: "'Playfair Display', serif",
+            fontWeight: 700,
+          }}
+        >
+          Description
+        </Typography>
         <TextField
-          label="Description"
+          variant="filled"
           name="description"
           value={newProduct.description}
           onChange={handleChange}
@@ -122,6 +153,7 @@ const AddProductPage = ({ onAddProduct }) => {
           InputProps={{
             sx: {
               color: "black",
+              ":hover": { backgroundColor: "inherit" }, // Disable hover effect
             },
             startAdornment: (
               <InputAdornment position="start">
@@ -130,8 +162,20 @@ const AddProductPage = ({ onAddProduct }) => {
             ),
           }}
         />
+        <Typography
+          variant="h6"
+          gutterBottom
+          sx={{
+            color: "#5A6A85",
+            marginBottom: 2,
+            fontFamily: "'Playfair Display', serif",
+            fontWeight: 700,
+          }}
+        >
+          Price
+        </Typography>
         <TextField
-          label="Price"
+          variant="outlined"
           name="price"
           value={newProduct.price}
           onChange={handleChange}
@@ -142,6 +186,7 @@ const AddProductPage = ({ onAddProduct }) => {
           InputProps={{
             sx: {
               color: "black",
+              ":hover": { backgroundColor: "inherit" }, // Disable hover effect
             },
             startAdornment: (
               <InputAdornment position="start">

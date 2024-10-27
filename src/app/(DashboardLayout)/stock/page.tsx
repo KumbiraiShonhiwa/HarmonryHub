@@ -196,10 +196,21 @@ const StockLoggingForm = () => {
           <Grid container spacing={2}>
             {/* ID Field */}
             <Grid item xs={12}>
+              <Typography
+                variant="h6"
+                gutterBottom
+                sx={{
+                  color: "#5A6A85",
+                  marginBottom: 2,
+                  fontFamily: "'Playfair Display', serif",
+                  fontWeight: 700,
+                }}
+              >
+                Product ID
+              </Typography>
               <Tooltip title="Unique identifier for the product">
                 <TextField
                   fullWidth
-                  label="Product ID"
                   name="id"
                   value={formData.id}
                   onChange={handleInputChange}
@@ -223,10 +234,21 @@ const StockLoggingForm = () => {
 
             {/* Title */}
             <Grid item xs={12}>
+              <Typography
+                variant="h6"
+                gutterBottom
+                sx={{
+                  color: "#5A6A85",
+                  marginBottom: 2,
+                  fontFamily: "'Playfair Display', serif",
+                  fontWeight: 700,
+                }}
+              >
+                Title
+              </Typography>
               <Tooltip title="Product name as it will be displayed">
                 <TextField
                   fullWidth
-                  label="Title"
                   name="title"
                   color="secondary"
                   value={formData.title}
@@ -251,10 +273,21 @@ const StockLoggingForm = () => {
 
             {/* Descriptor */}
             <Grid item xs={12}>
+              <Typography
+                variant="h6"
+                gutterBottom
+                sx={{
+                  color: "#5A6A85",
+                  marginBottom: 2,
+                  fontFamily: "'Playfair Display', serif",
+                  fontWeight: 700,
+                }}
+              >
+                Descriptor
+              </Typography>
               <Tooltip title="Brief description of the product">
                 <TextField
                   fullWidth
-                  label="Descriptor"
                   name="descriptor"
                   value={formData.descriptor}
                   onChange={handleInputChange}
@@ -274,10 +307,21 @@ const StockLoggingForm = () => {
 
             {/* Link */}
             <Grid item xs={12}>
+              <Typography
+                variant="h6"
+                gutterBottom
+                sx={{
+                  color: "#5A6A85",
+                  marginBottom: 2,
+                  fontFamily: "'Playfair Display', serif",
+                  fontWeight: 700,
+                }}
+              >
+                Product Link
+              </Typography>
               <Tooltip title="Link to the product page">
                 <TextField
                   fullWidth
-                  label="Product Link"
                   name="link"
                   value={formData.link}
                   onChange={handleInputChange}
@@ -297,6 +341,18 @@ const StockLoggingForm = () => {
 
             {/* Image Upload */}
             <Grid item xs={12}>
+              <Typography
+                variant="h6"
+                gutterBottom
+                sx={{
+                  color: "#5A6A85",
+                  marginBottom: 2,
+                  fontFamily: "'Playfair Display', serif",
+                  fontWeight: 700,
+                }}
+              >
+                Upload Image
+              </Typography>
               <Tooltip title="Upload the product image">
                 <Button
                   variant="contained"
@@ -357,10 +413,21 @@ const StockLoggingForm = () => {
             {/* Availability Date */}
             {formData.availability && (
               <Grid item xs={12}>
+                <Typography
+                  variant="h6"
+                  gutterBottom
+                  sx={{
+                    color: "#5A6A85",
+                    marginBottom: 2,
+                    fontFamily: "'Playfair Display', serif",
+                    fontWeight: 700,
+                  }}
+                >
+                  Date
+                </Typography>
                 <Tooltip title="Date when the product will be available">
                   <TextField
                     fullWidth
-                    label="Availability Date"
                     type="date"
                     name="availabilityDate"
                     value={formData.availabilityDate}
@@ -375,10 +442,21 @@ const StockLoggingForm = () => {
 
             {/* Price */}
             <Grid item xs={12}>
+              <Typography
+                variant="h6"
+                gutterBottom
+                sx={{
+                  color: "#5A6A85",
+                  marginBottom: 2,
+                  fontFamily: "'Playfair Display', serif",
+                  fontWeight: 700,
+                }}
+              >
+                Price
+              </Typography>
               <Tooltip title="Price of the product">
                 <TextField
                   fullWidth
-                  label="Price"
                   name="price"
                   value={formData.price}
                   onChange={handleInputChange}
@@ -402,10 +480,21 @@ const StockLoggingForm = () => {
 
             {/* Brand */}
             <Grid item xs={12}>
+              <Typography
+                variant="h6"
+                gutterBottom
+                sx={{
+                  color: "#5A6A85",
+                  marginBottom: 2,
+                  fontFamily: "'Playfair Display', serif",
+                  fontWeight: 700,
+                }}
+              >
+                Brand
+              </Typography>
               <Tooltip title="Brand name of the product">
                 <TextField
                   fullWidth
-                  label="Brand"
                   name="brand"
                   value={formData.brand}
                   onChange={handleInputChange}

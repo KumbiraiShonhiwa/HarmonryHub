@@ -723,6 +723,7 @@ function ProductUpdate() {
         onClose={handleClose}
         sx={{
           color: "#5A6A85",
+          
         }}
       >
         <DialogTitle>Updating Stock Item</DialogTitle>
@@ -736,7 +737,7 @@ function ProductUpdate() {
             margin="dense"
             InputProps={{
               sx: {
-                color: "black", // Set the text color to black
+                color: "#000000", // Set the text color to black
               },
             }}
             error={error.name} // Show error state
@@ -752,7 +753,7 @@ function ProductUpdate() {
             type="number"
             InputProps={{
               sx: {
-                color: "black", // Set the text color to black
+                color: "#000000", // Set the text color to black
               },
             }}
             error={error.price} // Show error state
@@ -767,7 +768,7 @@ function ProductUpdate() {
             margin="dense"
             InputProps={{
               sx: {
-                color: "black", // Set the text color to black
+                color: "#000000", // Set the text color to black
               },
             }}
           />
@@ -779,9 +780,10 @@ function ProductUpdate() {
             fullWidth
             margin="dense"
             type="number"
+            color="primary"
             InputProps={{
               sx: {
-                color: "black", // Set the text color to black
+                color: "#000000", // Set the text color to black
               },
             }}
           />
